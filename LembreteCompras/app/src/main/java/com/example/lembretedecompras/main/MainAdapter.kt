@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lembretedecompras.databinding.ItemRecyclerViewBinding
 import com.example.lembretedecompras.models.Product
 
-class MainAdapter() : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(private val deleteListener: (Product) -> Unit) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
     private var list: List<Product> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,6 +17,9 @@ class MainAdapter() : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.tvProduto.text = list[position].productName
+        holder.binding.ivDelete.setOnClickListener {
+            deleteListener(list[position])
+        }
     }
 
     override fun getItemCount(): Int {

@@ -41,7 +41,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpList() {
-        mainAdapter = MainAdapter()
+        mainAdapter = MainAdapter(deleteListener = {
+            mainViewModel.deleteProduct(it)
+        })
         binding.rvProdutos.adapter = mainAdapter
         binding.rvProdutos.layoutManager = LinearLayoutManager(this)
     }

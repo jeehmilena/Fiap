@@ -29,4 +29,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         repository.delete()
     }
 
+    fun deleteProduct(product: Product) = viewModelScope.launch(Dispatchers.IO){
+        repository.deleteProduct(product)
+    }
+
 }
