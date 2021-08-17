@@ -8,5 +8,5 @@ import retrofit2.http.Path
 interface AddressService {
 
     @GET("/ws/{cep}/json/")
-    fun searchAddress(@Path(" cep") cep: String): Call<Address>
+    fun searchAddress(@Path("cep") cep: String): Call<Address>
 }
